@@ -16,7 +16,7 @@ HEADER = '''#!/usr/bin/env python3
 # Copyright (c) 2026 shin2225
 """
 numpy_trace.py — NumPy がどこを参照して計算しているかを、層ごと・行ごとに VS Code 風ビューアで見るツール
-https://github.com/shin2225/py_structure1
+https://github.com/shin22s-lab/py_structure1
 
   使い方:
     python numpy_trace.py my_script.py -o trace.html        # スクリプトをトレース

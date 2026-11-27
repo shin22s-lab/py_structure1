@@ -4,7 +4,7 @@ Python のコードを実際に実行して、**NumPy がどのモジュール�
 
 ![NumPy Trace Explorer のスクリーンショット](docs/screenshot.png)
 
-- **デモ（GitHub Pages）**: `https://shin2225.github.io/py_structure1/`（Pages を有効化した後に公開）
+- **デモ（GitHub Pages）**: `https://shin22s-lab.github.io/py_structure1/`（Pages を有効化した後に公開）
 - **ツール本体**: [`numpy_trace.py`](numpy_trace.py)（1 ファイル。Python 3.12 以上 + NumPy）
 
 ## 何が見えるか
