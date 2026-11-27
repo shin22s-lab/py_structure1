@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install NumPy
+        run: python -m pip install --upgrade pip numpy
+
+      - name: numpy_trace.py が src/ と同期しているか確認
+        run: |
+          python tools/build.py
+          if ! git diff --exit-code -- numpy_trace.py; then
+            echo "::error file=numpy_trace.py::src/ を編集したら python tools/build.py で numpy_trace.py を再生成してコミットしてください"
+            exit 1
+          fi
+
+      - name: スモークテスト（-c）
+        run: |
+          python numpy_trace.py -c "import numpy as np; np.linalg.solve(np.eye(3), np.ones(3))" -o "$RUNNER_TEMP/t.html"
+          grep -q "const DATA" "$RUNNER_TEMP/t.html"
+
+      - name: スモークテスト（--demo）
+        run: |
+          python numpy_trace.py --demo --no-stdlib-source -o "$RUNNER_TEMP/demo.html"
+          grep -q "const DATA" "$RUNNER_TEMP/demo.html"
