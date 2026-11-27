@@ -4,7 +4,7 @@ Python のコードを実際に実行して、**NumPy がどのモジュール�
 
 ![NumPy Trace Explorer のスクリーンショット](docs/screenshot.png)
 
-- **デモ（GitHub Pages）**: `https://shin22s-lab.github.io/py_structure1/`（Pages を有効化した後に公開）
+- **デモ（GitHub Pages）**: <https://shin22s-lab.github.io/py_structure1/>
 - **ツール本体**: [`numpy_trace.py`](numpy_trace.py)（1 ファイル。Python 3.12 以上 + NumPy）
 
 ## 何が見えるか
@@ -90,6 +90,7 @@ tools/build.py           上の 3 つを結合 → numpy_trace.py / index.html /
 ```
 
 `src/` を編集したら `python tools/build.py --demo` で再生成してください。
+CI（`.github/workflows/ci.yml`）が、`numpy_trace.py` が `src/` と同期しているかと、`-c` / `--demo` のスモークテストを Python 3.12・3.13 で確認します。
 
 ## GitHub Pages で公開する
 
